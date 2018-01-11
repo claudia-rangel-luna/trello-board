@@ -1,3 +1,45 @@
 body {
 	background-color: beige;
 }
+.jumbotron {
+	background-color: beige;
+	font-family: sans-serif;
+
+}
+#swimlane-1 {
+	background-color: lightblue;
+}
+
+#swimlane-2 {
+	background-color: lightgrey;
+}
+
+#swimlane-3 {
+	background-color: lightgreen;
+}
+
+.new-card {
+	border: 1px solid lightgrey;
+	font-family: sans-serif;
+	background-color: lightgrey;
+}
+
+/*	- ability to add a swim lane
+	- ability to add a card to a swim lane
+	- move the swim lane to the left or right (next to another swim lane)
+	- add a name to the swim lane
+	- edit the name of a swim lane
+	- delete a swim lane
+		- Do we delete all the cards in a swim lane/
+		- Do we prompt "Are you sure you want to delete all these cards?"
+		- Do we prompt to move all the cards to an existing swim lane?	
+	Cards should have buttons for doing the following:
+		- When adding a card to a swim lane, you should be able to add a name and description to the card
+		- ability to edit the name and card for a swimlane
+		- ability to delete a card from a swim lane
+		- ability to move a card to the next or previous swim lane
+		- ability to move a card up or down in a swim lane
+
+
+	*/
+

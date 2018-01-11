@@ -11,99 +11,112 @@
 </head>
 
 <body>
+    <header>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Trello Board</h1>
+            </div>
+        </div>
+    </header>
+    
+    <section>
+    	<div class="d-flex justify-content-center ">
+    		 <button type="button" class="btn btn-primary border border-dark mr-3 mt-3 ml-3">New Swimlane</button> 
+    		 <button type="button" class="btn btn-primary border border-dark mr-3 mt-3 ml-3">New Card</button> 
+    		 
+    	</div>  	
+    </section>
+   
     <div class="container">
-        <div class="row">
-            <div class="col-sm border border-dark rounded mr-5 mt-5">
-               Things To Do...
+        <div class="row ">
+            <div id="swimlane-1" class="col-sm border border-dark rounded mr-5 mt-5 ">
+                Things To Do...
+                
                 <div class="card " style="width: 18rem;">
                     <div class="card-body border border-dark mr-3 mt-3 ml-3">
                         <h5 class="card-title ">Card title</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Save</a>
-                        <a href="#" class="card-link">Delete</a>
-                       
+                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+                      
+                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
                     </div>
-                     <div class="card-body border border-dark mr-3 mt-3 ml-3">
+                    <div class="card-body border border-dark mr-3 mt-2 ml-3">
                         <h5 class="card-title ">Card title</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Save</a>
-                        <a href="#" class="card-link">Delete</a>
+                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        
+                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
+
                     </div>
-                     <div class="card-body border border-dark mr-3 mt-3 ml-3">
-                        <h5 class="card-title ">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Save</a>
-                        <a href="#" class="card-link">Delete</a>
-                    </div>
+                    <span class="new-card mr-3 mt-2 ml-3 pb-3">Add a card here...</span>
                 </div>
             </div>
-            <div class="col-sm border border-dark rounded mr-5 mt-5">
+            <div id="swimlane-2" class="col-sm border border-dark rounded mr-5 mt-5">
                 In Progress...
                 <div class="card " style="width: 18rem;">
                     <div class="card-body border border-dark mr-3 mt-3 ml-3">
                         <h5 class="card-title ">Card title</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Save</a>
-                        <a href="#" class="card-link">Delete</a>
+                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+                       
+                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </div>
-                     <div class="card-body border border-dark mr-3 mt-3 ml-3">
+                    <div class="card-body border border-dark mr-3 mt-3 ml-3">
                         <h5 class="card-title ">Card title</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Save</a>
-                        <a href="#" class="card-link">Delete</a>
+                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+                       
+                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </div>
-                     <div class="card-body border border-dark mr-3 mt-3 ml-3">
-                        <h5 class="card-title ">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Save</a>
-                        <a href="#" class="card-link">Delete</a>
-                    </div>
+                    <span class="new-card mr-3 mt-2 ml-3">Add a card here...</span>
                 </div>
             </div>
-            <div class="col-sm border border-dark rounded mr-5 mt-5">
-              Completed...
-               <div class="card " style="width: 18rem;">
+            <div id="swimlane-3" class="col-sm border border-dark rounded mr-5 mt-5">
+                Completed...
+                <div class="card " style="width: 18rem;">
                     <div class="card-body border border-dark mr-3 mt-3 ml-3">
                         <h5 class="card-title ">Card title</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Save</a>
-                        <a href="#" class="card-link">Delete</a>
-                    </div>
-                     <div class="card-body border border-dark mr-3 mt-3 ml-3">
-                        <h5 class="card-title ">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Save</a>
-                        <a href="#" class="card-link">Delete</a>
+                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+                        
+                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
                     </div>
                     <div class="card-body border border-dark mr-3 mt-3 ml-3">
                         <h5 class="card-title ">Card title</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link">Edit</a>
-                        <a href="#" class="card-link">Save</a>
-                        <a href="#" class="card-link">Delete</a>
+                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i>
+						</a>
+                      
+                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
                     </div>
+                    <span class="new-card mr-3 mt-2 ml-3 pb-3">Add a card here...</span>
                 </div>
-
             </div>
         </div>
     </div>
+
+<script type="text/javascript">
+	var newSwimlane = document.createElement('div');
+	select.setAttribute('class', value: DOMString)
+
+
+</script>
+
+
 </body>
 
 </html>
