@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Trello Board Project</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="trelloBoardStyles.css">
@@ -21,15 +20,15 @@
     
     <section>
     	<div class="d-flex justify-content-center ">
-    		 <button type="button" class="btn btn-primary border border-dark mr-3 mt-3 ml-3">New Swimlane</button> 
-    		 <button type="button" class="btn btn-primary border border-dark mr-3 mt-3 ml-3">New Card</button> 
+    		 <button id="button1" type="button" class="btn btn-primary border border-dark mr-3 mt-3 ml-3">Create New Swimlane</button> 
+    		
     		 
     	</div>  	
     </section>
    
     <div class="container">
-        <div class="row ">
-            <div id="swimlane-1" class="col-sm border border-dark rounded mr-5 mt-5 ">
+        <div id="swimlanes" class="row ">
+            <div id="swimlane-1" class=" col-sm border border-dark rounded mr-5 mt-5 ">
                 Things To Do...
                 
                 <div class="card " style="width: 18rem;">
@@ -56,7 +55,7 @@
                     <span class="new-card mr-3 mt-2 ml-3 pb-3">Add a card here...</span>
                 </div>
             </div>
-            <div id="swimlane-2" class="col-sm border border-dark rounded mr-5 mt-5">
+            <!-- <div id="swimlane-2" class="col-sm border border-dark rounded mr-5 mt-5">
                 In Progress...
                 <div class="card " style="width: 18rem;">
                     <div class="card-body border border-dark mr-3 mt-3 ml-3">
@@ -105,13 +104,82 @@
                     </div>
                     <span class="new-card mr-3 mt-2 ml-3 pb-3">Add a card here...</span>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
+  
+
 <script type="text/javascript">
-	var newSwimlane = document.createElement('div');
-	select.setAttribute('class', value: DOMString)
+	//add swimlane
+	var button = document.getElementById('button1');
+	var swimlanes = document.getElementById('swimlanes');
+
+
+
+	button.addEventListener('click', function () {
+
+		var newSwimlane = document.createElement('div');
+		newSwimlane.setAttribute('class', 'swimlane');
+		swimlanes.appendChild(newSwimlane);	
+
+//add prompt for name on swimlane
+
+
+		var text = document.createElement('input');
+		text.setAttribute('class', 'text');
+		newSwimlane.appendChild(text);	
+
+		var edit = document.createElement('i');
+		edit.setAttribute('class', 'fa fa-pencil icon ' );
+		newSwimlane.appendChild(edit);
+
+		var deleteIcon = document.createElement('i');
+		deleteIcon.setAttribute('class', 'fa fa-trash icon' );
+		deleteIcon.addEventListener('click', function(){
+			var deleteIcon1 = document.getElementsByClassName('fa-trash');
+			var deleteIconparent = deleteIcon1.parentNode;
+			deleteIcon1.removeChild(deleteIcon);
+
+		})
+		newSwimlane.appendChild(deleteIcon);
+
+		var moveLeft = document.createElement('i');
+		moveLeft.setAttribute('class', 'fa fa-arrow-left icon');
+		newSwimlane.appendChild(moveLeft);
+		
+		var moveRight = document.createElement('i');
+		moveRight.setAttribute('class', 'fa fa-arrow-right icon');
+		newSwimlane.appendChild(moveRight);
+
+		var moveUp = document.createElement('i');
+		moveUp.setAttribute('class', 'fa fa-arrow-up icon');
+		newSwimlane.appendChild(moveUp);
+
+		var moveDown = document.createElement('i');
+		moveDown.setAttribute('class', 'fa fa-arrow-down icon');
+		newSwimlane.appendChild(moveDown);
+
+		var newCardButton = document.createElement('button');
+		newCardButton.setAttribute('id', 'newCardButton');
+		var buttonText = document.createTextNode('Add card...');
+		newCardButton.appendChild(buttonText);
+		newSwimlane.appendChild(newCardButton);
+
+
+	});
+
+	
+
+
+
+
+
+	
+
+
+
+
 
 
 </script>

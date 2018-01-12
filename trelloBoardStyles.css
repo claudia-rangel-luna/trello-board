@@ -24,10 +24,60 @@ body {
 	background-color: lightgrey;
 }
 
+.swimlane {
+	background-color: lightgrey;
+	width: 335px;
+	height: 600px;
+	margin-right: 10px;
+	margin-left: 20px;
+	margin-top: 10px;
+	border-radius: 15px;
+	border: 1px solid black;
+
+}
+
+#button1{
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
+
+.text{
+	margin-top: 15px;
+	margin: ;
+	width: 330px;
+	border: 1px solid black;
+
+}
+
+
+
+.icon{
+	
+	margin-left: 15px;
+}
+#newCardButton{
+	background-color: lightblue;
+	width: 100px;
+	height: 30px;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
 /*	- ability to add a swim lane
+		 create a new element --document.createElement("div")
+
 	- ability to add a card to a swim lane
+		create a new element --document.createElement("div")
+
 	- move the swim lane to the left or right (next to another swim lane)
+		create variable to find/reference id
+		create variable to save result of looking for parent using parentNode
+
 	- add a name to the swim lane
+		when creating a card be able to enter a name meaning having an input box available....
+
+
 	- edit the name of a swim lane
 	- delete a swim lane
 		- Do we delete all the cards in a swim lane/
@@ -39,7 +89,37 @@ body {
 		- ability to delete a card from a swim lane
 		- ability to move a card to the next or previous swim lane
 		- ability to move a card up or down in a swim lane
+	
+	to delete:
+	function handleDeleteClicked(container, child){
+		//alert('delete has been clicked')
+	container.removeChild(child);
+	}
+	
+
+	example:
+	function(){
+	var newDiv= document.createElement('div');
+	newDiv.setAttribute('class', 'card');
+	newDiv.appendChild(create button (delete, function(){})
+
+	parent.removeChild(newDiv);
+	}
+
+	function handleEditClicked(){
+	alert(edit)
+	} do this for all buttons edit, delete, up, down, right, left
 
 
+	function createButton(text, clickHandler){
+	var button= document.getElementById('button');
+	button.appendchild.createTextNode('text');
+	button.addEventListener("click", function(){
+
+		
+	
+	
+	return button;
+	})
 	*/
 
