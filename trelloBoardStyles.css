@@ -1,29 +1,17 @@
 body {
 	background-color: beige;
 }
+
 .jumbotron {
 	background-color: beige;
 	font-family: sans-serif;
-
-}
-#swimlane-1 {
-	background-color: lightblue;
 }
 
-#swimlane-2 {
-	background-color: lightgrey;
+#swimlanes{
+	display: flex;
+	flex-wrap: nowrap;
+	overflow: scroll;
 }
-
-#swimlane-3 {
-	background-color: lightgreen;
-}
-
-.new-card {
-	border: 1px solid lightgrey;
-	font-family: sans-serif;
-	background-color: lightgrey;
-}
-
 .swimlane {
 	background-color: lightgrey;
 	width: 335px;
@@ -31,37 +19,45 @@ body {
 	margin-right: 10px;
 	margin-left: 20px;
 	margin-top: 10px;
-	border-radius: 15px;
+	border-radius: 5px;
 	border: 1px solid black;
-
 }
-
-#button1{
-	background-color: black;
-	color: white;
-	font-weight: bold;
-}
-
-.text{
-	margin-top: 15px;
-	margin: ;
-	width: 330px;
-	border: 1px solid black;
-
-}
-
-
 
 .icon{
-	
 	margin-left: 15px;
 }
-#newCardButton{
+
+.swimlane .header {
+	padding-left: 15px;
+	font-family: sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: blue;
+}
+.card{
+	min-height:100px; 
+	margin: 10px;
 	background-color: lightblue;
-	width: 100px;
-	height: 30px;
-	margin-left: 20px;
-	margin-top: 10px;
+	border: 1px solid lightgrey;
+	border-radius: 5px;
+}
+.card .header{
+	padding-left: 15px;
+	font-family: sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: red;
+}
+
+.icons{
+	display: flex;
+	justify-content: space-around;
+}
+.card-white{
+	background-color: white;
+}
+.card-lightBlue{
+	background-color: lightblue;
 }
 
 /*	- ability to add a swim lane

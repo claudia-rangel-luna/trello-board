@@ -26,87 +26,11 @@
     	</div>  	
     </section>
    
-    <div class="container">
-        <div id="swimlanes" class="row ">
-            <div id="swimlane-1" class=" col-sm border border-dark rounded mr-5 mt-5 ">
-                Things To Do...
-                
-                <div class="card " style="width: 18rem;">
-                    <div class="card-body border border-dark mr-3 mt-3 ml-3">
-                        <h5 class="card-title ">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i>
-						</a>
-                      
-                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i>
-						</a>
-                    </div>
-                    <div class="card-body border border-dark mr-3 mt-2 ml-3">
-                        <h5 class="card-title ">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                        
-                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i>
-						</a>
-
-                    </div>
-                    <span class="new-card mr-3 mt-2 ml-3 pb-3">Add a card here...</span>
-                </div>
-            </div>
-            <!-- <div id="swimlane-2" class="col-sm border border-dark rounded mr-5 mt-5">
-                In Progress...
-                <div class="card " style="width: 18rem;">
-                    <div class="card-body border border-dark mr-3 mt-3 ml-3">
-                        <h5 class="card-title ">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i>
-						</a>
-                       
-                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="card-body border border-dark mr-3 mt-3 ml-3">
-                        <h5 class="card-title ">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i>
-						</a>
-                       
-                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    </div>
-                    <span class="new-card mr-3 mt-2 ml-3">Add a card here...</span>
-                </div>
-            </div>
-            <div id="swimlane-3" class="col-sm border border-dark rounded mr-5 mt-5">
-                Completed...
-                <div class="card " style="width: 18rem;">
-                    <div class="card-body border border-dark mr-3 mt-3 ml-3">
-                        <h5 class="card-title ">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i>
-						</a>
-                        
-                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i>
-						</a>
-                    </div>
-                    <div class="card-body border border-dark mr-3 mt-3 ml-3">
-                        <h5 class="card-title ">Card title</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="card-link"><i class="fa fa-pencil" aria-hidden="true"></i>
-						</a>
-                      
-                        <a href="#" class="card-link"><i class="fa fa-trash" aria-hidden="true"></i>
-						</a>
-                    </div>
-                    <span class="new-card mr-3 mt-2 ml-3 pb-3">Add a card here...</span>
-                </div>
-            </div> -->
+   <!--  <div class="container"> -->
+        <div id="swimlanes" >
+           
         </div>
-    </div>
+    <!-- </div> -->
 
   
 
@@ -114,64 +38,151 @@
 	//add swimlane
 	var button = document.getElementById('button1');
 	var swimlanes = document.getElementById('swimlanes');
+	var cardColors = ['card-lightBlue', 'card-white'];
+	var cardCount = 0;
 
+	function getItemName(){
+		var newItemName= prompt("Name"); 
 
+		if(newItemName === null){
+			return null;
+		}
+		var trimmedItemName = newItemName.trim();
+		if(trimmedItemName === ""){
+			return null;
+		}
+		return newItemName;
+	}
+
+	function createIconButton(container, icon, handler){
+		var iconButton = document.createElement('i');
+		iconButton.setAttribute('class', 'fa ' + icon + ' icon' );
+		container.appendChild(iconButton);
+		iconButton.addEventListener('click', handler);
+
+		return iconButton;
+	}
 
 	button.addEventListener('click', function () {
+
+		// Prompt user for swimlane name and check that it is valid and that user didn't cancel the prompt.
+
+		var newSwimlaneName = getItemName();
+		if(newSwimlaneName === null){
+			return;
+		}
+
+		// Creating new swimlane
 
 		var newSwimlane = document.createElement('div');
 		newSwimlane.setAttribute('class', 'swimlane');
 		swimlanes.appendChild(newSwimlane);	
 
-//add prompt for name on swimlane
+		// Creating new swimlane header
 
+		var swimlaneHeader = document.createElement('div');
+		swimlaneHeader.setAttribute('class', 'header');
+		var swimlaneHeaderText = document.createTextNode(newSwimlaneName);
+		swimlaneHeader.appendChild(swimlaneHeaderText);
+		newSwimlane.appendChild(swimlaneHeader);	
 
-		var text = document.createElement('input');
-		text.setAttribute('class', 'text');
-		newSwimlane.appendChild(text);	
+		var iconContainer = document.createElement('div');
+		iconContainer.setAttribute('class', 'icons');
+		newSwimlane.appendChild(iconContainer);
 
-		var edit = document.createElement('i');
-		edit.setAttribute('class', 'fa fa-pencil icon ' );
-		newSwimlane.appendChild(edit);
+		createIconButton(iconContainer, 'fa-pencil', function(){
+			
+			var newTitleName = getItemName();
+			if(newTitleName !== null){
+				swimlaneHeader.removeChild(swimlaneHeaderText);
+				swimlaneHeaderText = document.createTextNode(newTitleName);
+				swimlaneHeader.appendChild(swimlaneHeaderText);					
+			}	
+			
+		});
+		createIconButton(iconContainer,'fa-trash', function(){			
+			swimlanes.removeChild(newSwimlane)
+		})		
+		createIconButton(iconContainer, 'fa-arrow-left', function(){});
+		createIconButton(iconContainer, 'fa-arrow-right', function(){});
+		createIconButton(iconContainer, 'fa-plus', function(){
+			createNewCard(cardContainer);
+		});
 
-		var deleteIcon = document.createElement('i');
-		deleteIcon.setAttribute('class', 'fa fa-trash icon' );
-		deleteIcon.addEventListener('click', function(){
-			var deleteIcon1 = document.getElementsByClassName('fa-trash');
-			var deleteIconparent = deleteIcon1.parentNode;
-			deleteIcon1.removeChild(deleteIcon);
-
-		})
-		newSwimlane.appendChild(deleteIcon);
-
-		var moveLeft = document.createElement('i');
-		moveLeft.setAttribute('class', 'fa fa-arrow-left icon');
-		newSwimlane.appendChild(moveLeft);
-		
-		var moveRight = document.createElement('i');
-		moveRight.setAttribute('class', 'fa fa-arrow-right icon');
-		newSwimlane.appendChild(moveRight);
-
-		var moveUp = document.createElement('i');
-		moveUp.setAttribute('class', 'fa fa-arrow-up icon');
-		newSwimlane.appendChild(moveUp);
-
-		var moveDown = document.createElement('i');
-		moveDown.setAttribute('class', 'fa fa-arrow-down icon');
-		newSwimlane.appendChild(moveDown);
-
-		var newCardButton = document.createElement('button');
-		newCardButton.setAttribute('id', 'newCardButton');
-		var buttonText = document.createTextNode('Add card...');
-		newCardButton.appendChild(buttonText);
-		newSwimlane.appendChild(newCardButton);
-
-
+		var cardContainer = document.createElement('div');
+		newSwimlane.appendChild(cardContainer);
 	});
 
+	function createNewCard(cardContainer){
+		var newCardName = getItemName();
+		if(newCardName === null){
+			return;
+		}
+
+		var cardColorClass = cardColors[cardCount % cardColors.length];
+		cardCount = cardCount + 1;
+		// Creating new card
+
+		var newCard = document.createElement('div');
+		newCard.setAttribute('class', 'card ' + cardColorClass);
+		cardContainer.appendChild(newCard);	
+
+		// Creating new card header
+
+		var newCardHeader = document.createElement('div');
+		newCardHeader.setAttribute('class', 'header');
+		var newCardHeaderText = document.createTextNode(newCardName);
+		newCardHeader.appendChild(newCardHeaderText);
+		newCard.appendChild(newCardHeader);	
+
+		var iconContainer = document.createElement('div');
+		iconContainer.setAttribute('class', 'icons');
+		newCard.appendChild(iconContainer);
+
+		createIconButton(iconContainer, 'fa-pencil', function(){
+			var newTitleName = getItemName();
+			if(newTitleName !== null){
+				newCardHeader.removeChild(newCardHeaderText);
+				newCardHeaderText = document.createTextNode(newTitleName);
+				newCardHeader.appendChild(newCardHeaderText);					
+			}	
+		});
+		createIconButton(iconContainer,'fa-trash', function(){			
+			cardContainer.removeChild(newCard);
+		})		
+		createIconButton(iconContainer, 'fa-arrow-left', function(){});
+		createIconButton(iconContainer, 'fa-arrow-right', function(){});
+		createIconButton(iconContainer, 'fa-arrow-up', function(){
+			moveCardUp(newCard);
+		});
+		createIconButton(iconContainer, 'fa-arrow-down', function(){
+			moveCardDown(newCard);
+		});
+	}
 	
+	function moveCardUp(card){
+		//find the card in the containers children (indexof)
+		//check that card is at [0] then return; otherwise move up (if statement) 
+		//remove card from its current position (splice)
+		//add card to new position (splice)
+		var container = card.parentNode;
 
+		if(card.previousSibling !== null) {
+			var previousCard = card.previousSibling;
+			container.removeChild(card);
+			container.insertBefore(card, previousCard);
+		}
+	}
 
+	function moveCardDown(card){
+		var container = card.parentNode;
+
+		if(card.nextSibling !== null){
+			var nextCard = card.nextSibling;
+			container.removeChild(nextCard);
+			container.insertBefore(nextCard, card);
+		}
+	}
 
 
 
