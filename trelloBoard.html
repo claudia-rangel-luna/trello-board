@@ -27,9 +27,7 @@
     </section>
    
    <!--  <div class="container"> -->
-        <div id="swimlanes" >
-           
-        </div>
+        <div id="swimlanes"></div>
     <!-- </div> -->
 
   
@@ -42,7 +40,7 @@
 	var cardCount = 0;
 
 	function getItemName(){
-		var newItemName= prompt("Name"); 
+		var newItemName= prompt("New name"); 
 
 		if(newItemName === null){
 			return null;
@@ -91,20 +89,17 @@
 		newSwimlane.appendChild(iconContainer);
 
 		createIconButton(iconContainer, 'fa-pencil', function(){
-			
-			var newTitleName = getItemName();
-			if(newTitleName !== null){
-				swimlaneHeader.removeChild(swimlaneHeaderText);
-				swimlaneHeaderText = document.createTextNode(newTitleName);
-				swimlaneHeader.appendChild(swimlaneHeaderText);					
-			}	
-			
+			editSwimlane(swimlaneHeader, swimlaneHeaderText);			
 		});
-		createIconButton(iconContainer,'fa-trash', function(){			
-			swimlanes.removeChild(newSwimlane)
-		})		
-		createIconButton(iconContainer, 'fa-arrow-left', function(){});
-		createIconButton(iconContainer, 'fa-arrow-right', function(){});
+		createIconButton(iconContainer,'fa-trash', function(){	
+			deleteSwimlane(newSwimlane);			
+		});		
+		createIconButton(iconContainer, 'fa-arrow-left', function(){
+			moveSwimlaneLeft(newSwimlane);
+		});
+		createIconButton(iconContainer, 'fa-arrow-right', function(){
+			moveSwimlaneRight(newSwimlane);
+		});
 		createIconButton(iconContainer, 'fa-plus', function(){
 			createNewCard(cardContainer);
 		});
@@ -113,6 +108,45 @@
 		newSwimlane.appendChild(cardContainer);
 	});
 
+	function editSwimlane(header, headerText){
+		var newTitleName = getItemName();
+		if(newTitleName !== null){
+			header.removeChild(headerText);
+			headerText = document.createTextNode(newTitleName);
+			header.appendChild(headerText);					
+		}	
+	}
+
+	function deleteSwimlane(swimlane) {
+		var deleteSwimlane = confirm("Are you sure you want to delete swimlane?");
+
+		if(deleteSwimlane === false) {
+			return;
+		}
+
+		swimlanes.removeChild(swimlane);
+	}
+
+	function moveSwimlaneLeft(swimlane){
+		
+		var container = swimlane.parentNode;
+
+		if(swimlane.previousSibling !== null) {
+			var previousSwimlane = swimlane.previousSibling;
+			container.removeChild(swimlane);
+			container.insertBefore(swimlane, previousSwimlane);
+		}
+	}
+
+	function moveSwimlaneRight(swimlane){
+		var container = swimlane.parentNode;
+
+		if(swimlane.nextSibling !== null){
+			var nextSwimlane = swimlane.nextSibling;
+			container.removeChild(nextSwimlane);
+			container.insertBefore(nextSwimlane, swimlane);
+		}
+	}
 	function createNewCard(cardContainer){
 		var newCardName = getItemName();
 		if(newCardName === null){
@@ -140,18 +174,17 @@
 		newCard.appendChild(iconContainer);
 
 		createIconButton(iconContainer, 'fa-pencil', function(){
-			var newTitleName = getItemName();
-			if(newTitleName !== null){
-				newCardHeader.removeChild(newCardHeaderText);
-				newCardHeaderText = document.createTextNode(newTitleName);
-				newCardHeader.appendChild(newCardHeaderText);					
-			}	
+			editCard(newCardHeader, newCardHeaderText);
 		});
-		createIconButton(iconContainer,'fa-trash', function(){			
-			cardContainer.removeChild(newCard);
-		})		
-		createIconButton(iconContainer, 'fa-arrow-left', function(){});
-		createIconButton(iconContainer, 'fa-arrow-right', function(){});
+		createIconButton(iconContainer,'fa-trash', function(){
+			deleteCard(newCard);
+		});		
+		createIconButton(iconContainer, 'fa-arrow-left', function(){
+			moveCardLeft(newCard);
+		});
+		createIconButton(iconContainer, 'fa-arrow-right', function(){
+			moveCardRight(newCard);
+		});
 		createIconButton(iconContainer, 'fa-arrow-up', function(){
 			moveCardUp(newCard);
 		});
@@ -159,7 +192,26 @@
 			moveCardDown(newCard);
 		});
 	}
-	
+
+	function editCard(header, headerText) {
+		var newTitleName = getItemName();
+		if(newTitleName !== null){
+			header.removeChild(headerText);
+			headerText = document.createTextNode(newTitleName);
+			header.appendChild(headerText);					
+		}	
+	}
+
+	function deleteCard(card) {
+		var deleteCard = confirm("Are you sure you want to delete card?");
+
+		if(deleteCard === false) {
+			return;
+		}
+
+		card.parentNode.removeChild(card);
+	}
+
 	function moveCardUp(card){
 		//find the card in the containers children (indexof)
 		//check that card is at [0] then return; otherwise move up (if statement) 
@@ -183,16 +235,32 @@
 			container.insertBefore(nextCard, card);
 		}
 	}
+	function moveCardRight(card){
+		var cardContainer = card.parentNode;
+		var swimlane = cardContainer.parentNode;
 
+		var nextSwimlane = swimlane.nextSibling;
 
+		if(nextSwimlane === null){
+			return;
+		}
+		cardContainer.removeChild(card);
+		nextSwimlane.lastChild.appendChild(card);
+	}
 
-	
+	function moveCardLeft(card){
+		var cardContainer = card.parentNode;
+		var swimlane = cardContainer.parentNode;
 
+		var previousSwimlane = swimlane.previousSibling;
 
+		if(previousSwimlane === null){
+			return;
+		}
+		cardContainer.removeChild(card);
+		previousSwimlane.lastChild.appendChild(card);
 
-
-
-
+	}
 </script>
 
 
