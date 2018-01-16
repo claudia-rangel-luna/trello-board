@@ -6,6 +6,7 @@
     <title>Trello Board Project</title>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="trelloBoardStyles.css">
 </head>
 
@@ -20,25 +21,19 @@
     
     <section>
     	<div class="d-flex justify-content-center ">
-    		 <button id="button1" type="button" class="btn btn-primary border border-dark mr-3 mt-3 ml-3">Create New Swimlane</button> 
-    		
-    		 
-    	</div>  	
+    		 <button id="button1" type="button" class="btn btn-primary border border-dark mr-3 mt-3 ml-3">Create New Swimlane</button></div>  	
     </section>
-   
-   <!--  <div class="container"> -->
         <div id="swimlanes"></div>
-    <!-- </div> -->
-
-  
-
 <script type="text/javascript">
-	//add swimlane
+	//get reference to button and swimlane created above in HTML 
 	var button = document.getElementById('button1');
 	var swimlanes = document.getElementById('swimlanes');
-	var cardColors = ['card-lightBlue', 'card-white'];
+
+	//create an array for the multiple colors for the cards, see below for loop
+	var cardColors = ['card-white', 'card-tintColor'];
 	var cardCount = 0;
 
+	//function to prompt name for swimlane and card
 	function getItemName(){
 		var newItemName= prompt("New name"); 
 
@@ -51,7 +46,20 @@
 		}
 		return newItemName;
 	}
+	//function to add description to cards
+	function getDescription(){
+		var description= prompt("Description of task..."); 
 
+		if(description === null){
+			return null;
+		}
+		var trimmedItemName = description.trim();
+		if(trimmedItemName === ""){
+			return null;
+		}
+		return description;
+	}
+	//add icon function for every icon created inside the swimlane and card
 	function createIconButton(container, icon, handler){
 		var iconButton = document.createElement('i');
 		iconButton.setAttribute('class', 'fa ' + icon + ' icon' );
@@ -60,10 +68,10 @@
 
 		return iconButton;
 	}
-
+	//button reference above added event listener 
 	button.addEventListener('click', function () {
 
-		// Prompt user for swimlane name and check that it is valid and that user didn't cancel the prompt.
+		// Prompt user for swimlane name and check that it is valid and that user didn't cancel the prompt, using function created above
 
 		var newSwimlaneName = getItemName();
 		if(newSwimlaneName === null){
@@ -83,7 +91,8 @@
 		var swimlaneHeaderText = document.createTextNode(newSwimlaneName);
 		swimlaneHeader.appendChild(swimlaneHeaderText);
 		newSwimlane.appendChild(swimlaneHeader);	
-
+		
+		//creating icons
 		var iconContainer = document.createElement('div');
 		iconContainer.setAttribute('class', 'icons');
 		newSwimlane.appendChild(iconContainer);
@@ -103,7 +112,7 @@
 		createIconButton(iconContainer, 'fa-plus', function(){
 			createNewCard(cardContainer);
 		});
-
+		//creating card container to hold new cards inside a swimlane
 		var cardContainer = document.createElement('div');
 		newSwimlane.appendChild(cardContainer);
 	});
@@ -153,6 +162,12 @@
 			return;
 		}
 
+		var description = getDescription();
+		if(description === null){
+			return;
+		}
+
+		//
 		var cardColorClass = cardColors[cardCount % cardColors.length];
 		cardCount = cardCount + 1;
 		// Creating new card
@@ -169,6 +184,13 @@
 		newCardHeader.appendChild(newCardHeaderText);
 		newCard.appendChild(newCardHeader);	
 
+		var newCardDescription = document.createElement('div');
+		newCardDescription.setAttribute('class', 'description');
+		var newCardDescriptionText = document.createTextNode(description);
+		newCardDescription.appendChild(newCardDescriptionText);
+		newCard.appendChild(newCardDescription);	
+
+		
 		var iconContainer = document.createElement('div');
 		iconContainer.setAttribute('class', 'icons');
 		newCard.appendChild(iconContainer);
@@ -191,6 +213,7 @@
 		createIconButton(iconContainer, 'fa-arrow-down', function(){
 			moveCardDown(newCard);
 		});
+		
 	}
 
 	function editCard(header, headerText) {
@@ -199,6 +222,15 @@
 			header.removeChild(headerText);
 			headerText = document.createTextNode(newTitleName);
 			header.appendChild(headerText);					
+		}	
+	}
+
+	function editDescription(description, descriptionText) {
+		var newCardDescription = getDescription();
+		if(newCardDescription !== null){
+			description.removeChild(descriptionText);
+			descriptionText = document.createTextNode(newCardDescription);
+			description.appendChild(descriptionText);					
 		}	
 	}
 
